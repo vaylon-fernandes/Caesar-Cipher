@@ -1,9 +1,11 @@
 
 def caesar_cipher(message, shift, cipher_direction):
   result_message=''
+  # Make the shift negative if the use wants to decode. 
   if cipher_direction=='decode':
     shift*=-1
   for char in message:
+    # if character is uppercase use the ASCII represetation of uppercase letter i.e From 65-90
     if char.isupper():
       result_message+=chr((ord(char)+shift-65)%26+65)
     elif char.isspace() or char.isdigit():
