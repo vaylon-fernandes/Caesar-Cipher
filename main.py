@@ -6,8 +6,13 @@ def caesar_cipher(message, shift, cipher_direction):
     shift*=-1
   for char in message:
     # if character is uppercase use the ASCII represetation of uppercase letter i.e From 65-90
+    # ord converts string to ASCII 
+    # chr coverts ASCII to string
     if char.isupper():
-      result_message+=chr((ord(char)+shift-65)%26+65)
+      # Calculate shift amount, ASCII value of Character + Shift - ASCII value of A(65)
+      # shift_ammount%26 ensures that the shift amount value lies between 0-26
+      shift_amount=ord(char)+shift-65
+      result_message+=chr(shift_amount%26+65)
     elif char.isspace() or char.isdigit():
       result_message+=char
     else:
